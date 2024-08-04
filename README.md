@@ -1,8 +1,9 @@
 
-![Screenshot (421)](https://github.com/user-attachments/assets/f7b64abe-df0c-441d-89d9-7b9d6c970c5f)
 
 
 # House-Data-ETL-Project
+
+![Screenshot (421)](https://github.com/user-attachments/assets/f7b64abe-df0c-441d-89d9-7b9d6c970c5f)
 
 This project is an ETL (Extract, Transform, Load) pipeline for scraping, transforming, and loading house data into a PostgreSQL database using Apache Airflow. The project aims to demonstrate data engineering concepts such as web scraping, data transformation, and workflow orchestration.
 

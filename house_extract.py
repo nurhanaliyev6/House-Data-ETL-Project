@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import time
 
-
 def scrape_links(pages, base_url):
     extracted_links = []
     count = 0
@@ -17,8 +16,9 @@ def scrape_links(pages, base_url):
                     href = link.get('href')
                     if href and href.startswith('/elan/satilir'):
                         full_link = base_url + href
-                        count += 1
-                        extracted_links.append(full_link)
+                        if full_link not in extracted_links:  # Avoid duplicate links
+                            count += 1
+                            extracted_links.append(full_link)
                 print(f'in this {page}, we have {count} links')
             elif response.status_code == 429:
                 print(f'Too many requests for page {page}. Waiting...')
@@ -31,8 +31,9 @@ def scrape_links(pages, base_url):
                         href = link.get('href')
                         if href and href.startswith('/elan/satilir'):
                             full_link = base_url + href
-                            count += 1
-                            extracted_links.append(full_link)
+                            if full_link not in extracted_links:  # Avoid duplicate links
+                                count += 1
+                                extracted_links.append(full_link)
                     print(f'in this {page}, we have {count} links')
             else:
                 print(f'Failed to fetch the web page: {page}, Status code: {response.status_code}')
@@ -41,18 +42,14 @@ def scrape_links(pages, base_url):
             print(f"An error occurred while processing page {page}: {e}")
     return extracted_links
 
-
-
 def get_all_pages():
     pages = []
     page = 'https://yeniemlak.az/elan/axtar?elan_nov=1&emlak=1&menzil_nov=&qiymet=&qiymet2=&mertebe=&mertebe2=&otaq=&otaq2=&sahe_m=&sahe_m2=&sahe_s=&sahe_s2=&seher%5B%5D=57&page='
     
-    for i in range(1,100):
+    for i in range(1, 100):
         pages.append(page + str(i))
     
     return pages
-
-
 
 def get_information(links):
     try:
@@ -152,12 +149,11 @@ def get_information(links):
         print(e)
         return None
 
-
-
-
 def save_data(df, filepath):
     if df is not None:
         df.to_csv(filepath, index=False)
         print(f"Data saved to '{filepath}'")
     else:
         print("No data to save.")
+
+

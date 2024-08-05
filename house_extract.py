@@ -46,7 +46,7 @@ def get_all_pages():
     pages = []
     page = 'https://yeniemlak.az/elan/axtar?elan_nov=1&emlak=1&menzil_nov=&qiymet=&qiymet2=&mertebe=&mertebe2=&otaq=&otaq2=&sahe_m=&sahe_m2=&sahe_s=&sahe_s2=&seher%5B%5D=57&page='
     
-    for i in range(1, 100):
+    for i in range(1, 140):
         pages.append(page + str(i))
     
     return pages

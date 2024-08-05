@@ -45,13 +45,13 @@ Install Dependencies <br>
 
 Set Up Airflow <br>
 `airflow db init`<br>
-`airflow users create \ 
-    --username admin \ 
-    --password admin \ 
-    --firstname Admin \
-    --lastname User \
-    --role Admin \
-    --email admin@example.com`
+`airflow users create \ <br>
+    --username admin \ <br>
+    --password admin \ <br>
+    --firstname Admin \ <br>
+    --lastname User \ <br>
+    --role Admin \ <br>
+    --email admin@example.com` <br>
 <br>
 Set Up PostgreSQL <br>
 `CREATE DATABASE house_data; ` <br>
@@ -113,7 +113,7 @@ Connect to your PostgreSQL database and verify the data is loaded correctly: <br
 
 ## Notes <br>
 Handling 429 Status Code:
-When making too many requests to the website, we might encounter a 429 status code, which means "Too Many Requests". To handle this, consider implementing a delay between requests which also has bad effects. I have added time.sleep(2) which is 2 seconds delay when extracting information from a link. I have scraped 100 pages and each page contains 50 houses.For a page it take 50 *2 s= 100 second. And 100 pages * 100 s= 10000 s / 3600 s + plus additional computation= 2 h 40 m roughly 3 hr. So it finishes this process in 3 hr.
+When making too many requests to the website, we might encounter a 429 status code, which means "Too Many Requests". To handle this, consider implementing a delay between requests which also has bad effects. I have added time.sleep(2) which is 2 seconds delay when extracting information from a link. I have scraped 139 pages and each page contains 25 houses.For a page it take 25 *2 s= 50 second. And 139 pages * 50 s= 6950 s / 3600 s + plus additional computation= 2 h 20 roughly.
 <br>
 PS: Purpose of this project is to show big picture of etl design and orchestrating with airflow.
 

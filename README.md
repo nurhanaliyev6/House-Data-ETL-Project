@@ -45,13 +45,13 @@ Install Dependencies <br>
 
 Set Up Airflow <br>
 `airflow db init`<br>
-`airflow users create \ <br>
-    --username admin \ <br>
-    --password admin \ <br>
-    --firstname Admin \ <br>
-    --lastname User \ <br>
-    --role Admin \ <br>
-    --email admin@example.com` <br>
+`airflow users create \ 
+    --username admin \ 
+    --password admin \ 
+    --firstname Admin \ 
+    --lastname User \ 
+    --role Admin \ 
+    --email admin@example.com` 
 <br>
 Set Up PostgreSQL <br>
 `CREATE DATABASE house_data; ` <br>

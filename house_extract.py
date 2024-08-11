@@ -46,7 +46,7 @@ def get_all_pages():
     pages = []
     page = 'https://yeniemlak.az/elan/axtar?elan_nov=1&emlak=1&menzil_nov=&qiymet=&qiymet2=&mertebe=&mertebe2=&otaq=&otaq2=&sahe_m=&sahe_m2=&sahe_s=&sahe_s2=&seher%5B%5D=57&page='
     
-    for i in range(1, 140):
+    for i in range(1, 143):
         pages.append(page + str(i))
     
     return pages
@@ -102,13 +102,19 @@ def get_information(links):
                         else:
                             value_text = None
                         
-                        # Add the key-value pair to the dictionary
-                        if key_text and value_text:
-                            if key_text in columns:
-                                title_data[key_text] = value_text
-                            else:
-                                key_text = key_text.replace(':', '')
-                                title_data[key_text] = value_text
+
+                        print('--------------')
+                        print('Key: ',key_text)
+                        print('Value: ',value_text)
+                        print('----------------')
+
+                        if ':' in key_text:
+                            key_text = key_text.replace(':', '')
+                            title_data[key_text] = value_text
+                        else:
+                            title_data[key_text] = value_text
+
+                        
                     
                     # Find the first div with the class 'box'
                     box_div = soup.find('div', class_='box')
@@ -155,5 +161,3 @@ def save_data(df, filepath):
         print(f"Data saved to '{filepath}'")
     else:
         print("No data to save.")
-
-
